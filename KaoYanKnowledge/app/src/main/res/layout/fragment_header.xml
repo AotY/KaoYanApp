@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="220dp">
+
+    <ImageView
+        android:id="@android:id/background"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/math_logo2" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="bottom|right|end"
+        android:layout_marginStart="@dimen/android_spaces_large"
+        android:layout_marginEnd="@dimen/android_spaces_large"
+        android:layout_marginLeft="@dimen/android_spaces_large"
+        android:layout_marginRight="@dimen/android_spaces_large"
+        android:layout_marginBottom="@dimen/android_spaces">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="数学"
+            style="@style/Header.TitleText" />
+
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="一二三"
+            style="@style/Header.SubTitleText" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@android:id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="?android:actionBarSize"
+        android:background="@drawable/header_ab_shadow" />
+
+
+</FrameLayout>

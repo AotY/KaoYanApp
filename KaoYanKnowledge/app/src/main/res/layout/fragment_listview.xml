@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingLeft="@dimen/android_spaces_large"
+    android:paddingRight="@dimen/android_spaces_large"
+    android:paddingStart="@dimen/android_spaces_large"
+    android:paddingEnd="@dimen/android_spaces_large"
+    android:divider="@drawable/list_view_divider"
+    android:id="@+id/math_list_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbarStyle="outsideOverlay" />

@@ -1,0 +1,50 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--&lt;!&ndash; Base application theme. &ndash;&gt;-->
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
+        <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+    <!--</style>-->
+
+    <style name="AppTheme" parent="AppBaseTheme"></style>
+
+    <style name="AppBaseTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryDark">@color/drak_primary_color</item>
+        <item name="colorAccent">@color/accent_color</item>
+        <item name="android:textColorPrimary">@color/text_icons</item>
+        <item name="android:windowBackground">@color/text_icons</item>
+        <item name="android:itemBackground">@color/text_icons</item>
+        <item name="android:itemTextAppearance">@style/WeChatActionBarOverflow</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+
+    <style name="WeChatActionBarOverflow" parent="@android:style/Widget.ActionButton.Overflow">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/primary_color</item>
+    </style>
+
+
+
+    <!--  ************************
+          ||||||||||||||||||||||||
+                   HEADER
+          ||||||||||||||||||||||||
+          ************************  -->
+    <style name="Header.TitleText" parent="android:TextAppearance.Holo">
+        <item name="android:fontFamily" tools:ignore="NewApi">sans-serif-light</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:shadowColor">#8000</item>
+        <item name="android:shadowRadius">5</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowDy">2</item>
+    </style>
+
+    <style name="Header.SubTitleText" parent="Header.TitleText">
+        <item name="android:fontFamily" tools:ignore="NewApi">sans-serif-condensed</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+</resources>
