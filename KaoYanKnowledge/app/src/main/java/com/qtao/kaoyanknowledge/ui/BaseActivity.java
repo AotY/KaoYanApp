@@ -13,10 +13,6 @@ import com.qtao.kaoyanknowledge.utils.L;
  */
 public class BaseActivity extends Activity {
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 2f174ea5baccc84928f2c0a75f318b9ef517bf0c
     /**
      * Actionbar
      */
@@ -33,7 +29,6 @@ public class BaseActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initActionBar();
-<<<<<<< HEAD
 
 
 //        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
@@ -45,12 +40,6 @@ public class BaseActivity extends Activity {
     }
 
 
-
-
-=======
-    }
-
->>>>>>> 2f174ea5baccc84928f2c0a75f318b9ef517bf0c
     private void initActionBar() {
         actionBar = getActionBar();
 //        actionBar.setDisplayHomeAsUpEnabled(true);
@@ -86,10 +75,11 @@ public class BaseActivity extends Activity {
 
     /**
      * 获取FadingActionBarHelper
-<<<<<<< HEAD
+     * <<<<<<< HEAD
+     * <p/>
+     * =======
+     * >>>>>>> 2f174ea5baccc84928f2c0a75f318b9ef517bf0c
      *
-=======
->>>>>>> 2f174ea5baccc84928f2c0a75f318b9ef517bf0c
      * @return FadingActionBarHelper
      */
     public FadingActionBarHelper getFadingActionBarHelper() {

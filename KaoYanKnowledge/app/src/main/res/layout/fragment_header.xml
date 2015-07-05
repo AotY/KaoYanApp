@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="220dp">
 
-<<<<<<< HEAD
 
     <com.andexert.library.RippleView
         android:layout_width="wrap_content"
@@ -18,14 +17,6 @@
             android:src="@drawable/math_logo2" />
 
     </com.andexert.library.RippleView>
-=======
-    <ImageView
-        android:id="@android:id/background"
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/math_logo2" />
->>>>>>> 2f174ea5baccc84928f2c0a75f318b9ef517bf0c
 
     <LinearLayout
         android:layout_width="wrap_content"

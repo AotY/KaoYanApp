@@ -15,10 +15,7 @@ import com.qtao.kaoyanknowledge.R;
 import com.qtao.kaoyanknowledge.adapter.EnglishAdapter;
 import com.qtao.kaoyanknowledge.models.EnglishItem;
 import com.qtao.kaoyanknowledge.ui.BaseActivity;
-<<<<<<< HEAD
 import com.qtao.kaoyanknowledge.ui.MainActivity;
-=======
->>>>>>> 2f174ea5baccc84928f2c0a75f318b9ef517bf0c
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,10 +57,7 @@ public class EnglishFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-<<<<<<< HEAD
         ((MainActivity) getActivity()).getTintManager().setStatusBarAlpha(255);
-=======
->>>>>>> 2f174ea5baccc84928f2c0a75f318b9ef517bf0c
         ((BaseActivity) getActivity()).getFadingActionBarHelper().setActionBarAlpha(255);
         initView();
     }
