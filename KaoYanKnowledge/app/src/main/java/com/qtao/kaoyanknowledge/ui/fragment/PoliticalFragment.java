@@ -14,7 +14,7 @@ import android.widget.RelativeLayout;
 import com.qtao.kaoyanknowledge.R;
 import com.qtao.kaoyanknowledge.adapter.EnglishAdapter;
 import com.qtao.kaoyanknowledge.models.EnglishItem;
-import com.qtao.kaoyanknowledge.ui.MainActivity;
+import com.qtao.kaoyanknowledge.ui.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +27,6 @@ public class PoliticalFragment extends Fragment {
      */
     private RecyclerView recyclerView;
 
-    /**
-     *
-     */
-    private Activity activity;
 
     /**
      *
@@ -42,8 +38,6 @@ public class PoliticalFragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        this.activity = activity;
-        ((MainActivity) activity).getFadingActionBarHelper().setActionBarAlpha(255);
     }
 
     @Override
@@ -58,13 +52,14 @@ public class PoliticalFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        ((BaseActivity) getActivity()).getFadingActionBarHelper().setActionBarAlpha(255);
         initView();
     }
 
     private void initView() {
-        actionbarHeight = activity.getActionBar().getHeight();
+        actionbarHeight = ((BaseActivity) getActivity()).getMyActionbar().getHeight();
 
-        recyclerView = (RecyclerView) activity.findViewById(R.id.political_recycle_view);
+        recyclerView = (RecyclerView) getActivity().findViewById(R.id.political_recycle_view);
         RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) recyclerView.getLayoutParams();
         lp.topMargin = actionbarHeight;
         recyclerView.setLayoutParams(lp);
@@ -88,7 +83,7 @@ public class PoliticalFragment extends Fragment {
         List<EnglishItem> contacts = getContacts();
 
         // Create an adapter
-        mAdapter = new EnglishAdapter(activity, contacts);
+        mAdapter = new EnglishAdapter(getActivity(), contacts);
 
         // Bind adapter to list
         recyclerView.setAdapter(mAdapter);

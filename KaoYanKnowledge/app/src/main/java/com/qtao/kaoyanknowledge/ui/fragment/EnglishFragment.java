@@ -14,7 +14,7 @@ import android.widget.RelativeLayout;
 import com.qtao.kaoyanknowledge.R;
 import com.qtao.kaoyanknowledge.adapter.EnglishAdapter;
 import com.qtao.kaoyanknowledge.models.EnglishItem;
-import com.qtao.kaoyanknowledge.ui.MainActivity;
+import com.qtao.kaoyanknowledge.ui.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,11 +36,6 @@ public class EnglishFragment extends Fragment {
     /**
      *
      */
-    private Activity activity;
-
-    /**
-     *
-     */
     private EnglishAdapter mAdapter;
 
     private int actionbarHeight ;
@@ -48,29 +43,27 @@ public class EnglishFragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        this.activity = activity;
-        ((MainActivity) activity).getFadingActionBarHelper().setActionBarAlpha(255);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View contactsLayout = inflater.inflate(R.layout.english_layout,
+        return inflater.inflate(R.layout.english_layout,
                 container, false);
-        return contactsLayout;
 
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        ((BaseActivity) getActivity()).getFadingActionBarHelper().setActionBarAlpha(255);
         initView();
     }
 
     private void initView() {
-        actionbarHeight = activity.getActionBar().getHeight() ;
+        actionbarHeight = ((BaseActivity) getActivity()).getMyActionbar().getHeight() ;
 
-        recyclerView = (RecyclerView) activity.findViewById(R.id.english_recycle_view);
+        recyclerView = (RecyclerView) getActivity().findViewById(R.id.english_recycle_view);
         RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) recyclerView.getLayoutParams();
         lp.topMargin = actionbarHeight;
         recyclerView.setLayoutParams(lp);
@@ -94,7 +87,7 @@ public class EnglishFragment extends Fragment {
         List<EnglishItem> contacts = getContacts();
 
         // Create an adapter
-        mAdapter = new EnglishAdapter(activity, contacts);
+        mAdapter = new EnglishAdapter(getActivity(), contacts);
 
         // Bind adapter to list
         recyclerView.setAdapter(mAdapter);

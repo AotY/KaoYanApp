@@ -3,6 +3,7 @@
     package="com.qtao.kaoyanknowledge" >
 
     <application
+        android:name=".App.KaoYanApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -10,7 +11,7 @@
         <activity
             android:name=".ui.MainActivity"
             android:label="@string/app_name"
-            android:configChanges="screenLayout|keyboard|orientation|keyboardHidden">
+            android:configChanges="screenLayout|keyboard|orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

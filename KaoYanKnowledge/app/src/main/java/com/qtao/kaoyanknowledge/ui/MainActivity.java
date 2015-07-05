@@ -1,33 +1,32 @@
 package com.qtao.kaoyanknowledge.ui;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.achep.header2actionbar.FadingActionBarHelper;
+import com.github.johnpersano.supertoasts.SuperToast;
+import com.github.johnpersano.supertoasts.util.Style;
+import com.qtao.kaoyanknowledge.App.KaoYanApplication;
 import com.qtao.kaoyanknowledge.R;
 import com.qtao.kaoyanknowledge.ui.fragment.EnglishFragment;
 import com.qtao.kaoyanknowledge.ui.fragment.MajorFragment;
 import com.qtao.kaoyanknowledge.ui.fragment.MathFragment;
 import com.qtao.kaoyanknowledge.ui.fragment.PoliticalFragment;
+import com.qtao.kaoyanknowledge.utils.L;
 
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     /**
      * 用于展示数学的Fragment
      */
-//    private TestFragment mathFragment;
-//    private ListViewFragment mathFragment;
     private MathFragment mathFragment;
     /**
      * 用于展示英语的Fragment
@@ -41,6 +40,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private PoliticalFragment politicalFragment;
 
     /**
+     * g
      * 用于展示专业的Fragment
      */
     private MajorFragment majorFragment;
@@ -111,10 +111,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
      */
     private FragmentManager fragmentManager;
 
-    /**
-     * Actionbar
-     */
-    private ActionBar actionBar;
 
     /**
      * 文字选中的颜色
@@ -127,17 +123,21 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private String textCleanColor = "#212121";
 
     /**
-     * 用于让ActionBar出现渐变的效果
+     * 用于保存页面的名字
      */
-    private FadingActionBarHelper mFadingActionBarHelper;
+    private static final String Channel = "channel" ;
+
+    /**
+     * 用于记录当前的Tad ,即当前在那个页面
+     */
+    private int curTad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-        //初始化ActionBar
-        initHead2ActionBar();
+
         // 初始化布局元素
         initViews();
         fragmentManager = getFragmentManager();
@@ -145,22 +145,26 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setTabSelection(0);
     }
 
-    private void initHead2ActionBar() {
-        actionBar = getActionBar();
-        Log.i("TAG", "actionBar ==" + actionBar);
-        mFadingActionBarHelper = new FadingActionBarHelper(actionBar,
-                getResources().getDrawable(R.drawable.actionbar_bg));
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        L.e("onConfigurationChanged ");
     }
 
-    /**
-     * 获取ActionBar
-     * @return
-     */
-    public ActionBar getMyActionbar(){
-        if(actionBar == null){
-            actionBar = getActionBar() ;
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(Channel , curTad);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if(savedInstanceState != null){
+            setTabSelection(savedInstanceState.getInt(Channel));
         }
-        return actionBar ;
     }
 
     /**
@@ -215,6 +219,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
      * @param index 每个tab页对应的下标。0表示消息，1表示联系人，2表示动态，3表示设置。
      */
     private void setTabSelection(int index) {
+        curTad = index ;
         // 每次选中之前先清楚掉上次的选中状态
         clearSelection();
         // 开启一个Fragment事务
@@ -227,13 +232,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 mathImage.setImageResource(R.drawable.ic_math_primary_1_48dp);
                 mathText.setTextColor(Color.parseColor(textFocusColor));
                 if (mathFragment == null) {
-//                    mathFragment = new TestFragment();
                     mathFragment = new MathFragment();
 //                    mathFragment = new ListViewFragment();
 //                    transaction.add(R.id.content, listViewFragment);
-                } else {
-//                    transaction.show(messageFragment);
                 }
+//                else {
+//                    transaction.show(messageFragment);
+//                }
                 transaction.replace(R.id.content, mathFragment);
                 break;
             case 1:
@@ -244,10 +249,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
 //                    // 如果ContactsFragment为空，则创建一个并添加到界面上
                     englishFragment = new EnglishFragment();
 //                    transaction.add(R.id.content, contactsFragment);
-                } else {
+                }
+//                else {
 //                    // 如果ContactsFragment不为空，则直接将它显示出来
 //                    transaction.show(contactsFragment);
-                }
+//                }
                 transaction.replace(R.id.content, englishFragment);
                 break;
             case 2:
@@ -258,10 +264,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     // 如果NewsFragment为空，则创建一个并添加到界面上
                     politicalFragment = new PoliticalFragment();
 //                    transaction.add(R.id.content, newsFragment);
-                } else {
-                    // 如果NewsFragment不为空，则直接将它显示出来
-//                    transaction.show(newsFragment);
                 }
+//                else {
+                // 如果NewsFragment不为空，则直接将它显示出来
+//                    transaction.show(newsFragment);
+//                }
                 transaction.replace(R.id.content, politicalFragment);
                 break;
             case 3:
@@ -273,10 +280,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     // 如果SettingFragment为空，则创建一个并添加到界面上
                     majorFragment = new MajorFragment();
 //                    transaction.add(R.id.content, settingFragment);
-                } else {
-                    // 如果SettingFragment不为空，则直接将它显示出来
-//                    transaction.show(settingFragment);
                 }
+//                else {
+                // 如果SettingFragment不为空，则直接将它显示出来
+//                    transaction.show(settingFragment);
+//                }
                 transaction.replace(R.id.content, majorFragment);
                 break;
         }
@@ -301,26 +309,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         majorText.setTextColor(Color.parseColor(textCleanColor));
     }
 
-    /**
-     * 将所有的Fragment都置为隐藏状态。
-     *
-     * @param transaction 用于对Fragment执行操作的事务
-     */
-    private void hideFragments(FragmentTransaction transaction) {
-
-        if (mathFragment != null) {
-            transaction.hide(mathFragment);
-        }
-        if (englishFragment != null) {
-            transaction.hide(englishFragment);
-        }
-        if (politicalFragment != null) {
-            transaction.hide(politicalFragment);
-        }
-        if (majorFragment != null) {
-            transaction.hide(majorFragment);
-        }
-    }
 
 
     @Override
@@ -332,21 +320,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            SuperToast.create(KaoYanApplication.appContext, "Setting", SuperToast.Duration.SHORT,
+                    Style.getStyle(Style.BLUE, SuperToast.Animations.SCALE)).show();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
-    public FadingActionBarHelper getFadingActionBarHelper() {
-        return mFadingActionBarHelper;
-    }
 
 }
