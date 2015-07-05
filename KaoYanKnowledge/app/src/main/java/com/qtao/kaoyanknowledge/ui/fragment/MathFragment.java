@@ -29,7 +29,7 @@ import com.achep.header2actionbar.HeaderFragment;
 import com.qtao.kaoyanknowledge.R;
 import com.qtao.kaoyanknowledge.adapter.MathAdapter;
 import com.qtao.kaoyanknowledge.models.MathItem;
-import com.qtao.kaoyanknowledge.ui.MainActivity;
+import com.qtao.kaoyanknowledge.ui.BaseActivity;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -64,7 +64,7 @@ public class MathFragment extends HeaderFragment {
             public void onHeaderScrollChanged(float progress, int height, int scroll) {
 //                height -= getActivity().getActionBar().getHeight();
 
-                height -= ((MainActivity) activity).getMyActionbar().getHeight();
+                height -= ((BaseActivity) activity).getMyActionbar().getHeight();
                 progress = (float) scroll / height;
                 if (progress > 1f) progress = 1f;
 
@@ -76,7 +76,7 @@ public class MathFragment extends HeaderFragment {
                 // `````````*
                 progress = (1 - (float) Math.cos(progress * Math.PI)) * 0.5f;
 
-                ((MainActivity) activity)
+                ((BaseActivity) activity)
                         .getFadingActionBarHelper()
                         .setActionBarAlpha((int) (255 * progress));
             }
@@ -140,7 +140,6 @@ public class MathFragment extends HeaderFragment {
 
     private static class AsyncLoadSomething extends AsyncTask<Void, Void, List<MathItem>> {
 
-        private static final String TAG = "AsyncLoadSomething";
 
         final WeakReference<MathFragment> weakFragment;
 
