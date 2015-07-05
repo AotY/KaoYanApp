@@ -8,25 +8,26 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.qtao.kaoyanknowledge.R;
-import com.qtao.kaoyanknowledge.ui.MainActivity;
+import com.qtao.kaoyanknowledge.ui.BaseActivity;
 
-public class MajorFragment  extends Fragment {
+public class MajorFragment extends Fragment {
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        ((MainActivity) activity).getFadingActionBarHelper().setActionBarAlpha(255);
+
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View contactsLayout = inflater.inflate(R.layout.major_layout,
+        return inflater.inflate(R.layout.major_layout,
                 container, false);
-        return contactsLayout;
     }
 
-
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        ((BaseActivity) getActivity()).getFadingActionBarHelper().setActionBarAlpha(255);
+    }
 }
