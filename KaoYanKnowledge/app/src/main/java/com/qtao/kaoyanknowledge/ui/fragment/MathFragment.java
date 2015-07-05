@@ -30,7 +30,10 @@ import com.qtao.kaoyanknowledge.R;
 import com.qtao.kaoyanknowledge.adapter.MathAdapter;
 import com.qtao.kaoyanknowledge.models.MathItem;
 import com.qtao.kaoyanknowledge.ui.BaseActivity;
+<<<<<<< HEAD
 import com.qtao.kaoyanknowledge.ui.MainActivity;
+=======
+>>>>>>> 2f174ea5baccc84928f2c0a75f318b9ef517bf0c
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
