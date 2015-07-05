@@ -119,7 +119,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     /**
      * 文字选中的颜色
      */
-    private String textFocusColor = "#009688"; //#
+    private String textFocusColor = "#00BCD4"; //# 009688
 
     /**
      * 文字没有被选中的颜色
@@ -150,6 +150,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
         Log.i("TAG", "actionBar ==" + actionBar);
         mFadingActionBarHelper = new FadingActionBarHelper(actionBar,
                 getResources().getDrawable(R.drawable.actionbar_bg));
+    }
+
+    /**
+     * 获取ActionBar
+     * @return
+     */
+    public ActionBar getMyActionbar(){
+        if(actionBar == null){
+            actionBar = getActionBar() ;
+        }
+        return actionBar ;
     }
 
     /**
@@ -213,7 +224,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         switch (index) {
             case 0:
                 // 当点击了消息tab时，改变控件的图片和文字颜色
-                mathImage.setImageResource(R.drawable.ic_math_primary_48dp);
+                mathImage.setImageResource(R.drawable.ic_math_primary_1_48dp);
                 mathText.setTextColor(Color.parseColor(textFocusColor));
                 if (mathFragment == null) {
 //                    mathFragment = new TestFragment();
@@ -227,7 +238,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case 1:
                 // 当点击了联系人tab时，改变控件的图片和文字颜色
-                englishImage.setImageResource(R.drawable.ic_english_primary_48dp);
+                englishImage.setImageResource(R.drawable.ic_english_primary_1_48dp);
                 englishText.setTextColor(Color.parseColor(textFocusColor));
                 if (englishFragment == null) {
 //                    // 如果ContactsFragment为空，则创建一个并添加到界面上
@@ -241,7 +252,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case 2:
                 // 当点击了动态tab时，改变控件的图片和文字颜色
-                politicalImage.setImageResource(R.drawable.ic_political_primary_48dp);
+                politicalImage.setImageResource(R.drawable.ic_political_primary_1_48dp);
                 politicalText.setTextColor(Color.parseColor(textFocusColor));
                 if (politicalFragment == null) {
                     // 如果NewsFragment为空，则创建一个并添加到界面上
@@ -256,7 +267,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case 3:
             default:
                 // 当点击了设置tab时，改变控件的图片和文字颜色
-                majorImage.setImageResource(R.drawable.ic_major_primary_48dp);
+                majorImage.setImageResource(R.drawable.ic_major_primary_1_48dp);
                 majorText.setTextColor(Color.parseColor(textFocusColor));
                 if (majorFragment == null) {
                     // 如果SettingFragment为空，则创建一个并添加到界面上
@@ -276,17 +287,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
      * 清除掉所有的选中状态。
      */
     private void clearSelection() {
-        mathImage.setImageResource(R.drawable.ic_math_gray_48dp);
+        mathImage.setImageResource(R.drawable.ic_math_gray_400_48dp);
         mathText.setTextColor(Color.parseColor(textCleanColor));
 
-        englishImage.setImageResource(R.drawable.ic_english_gray_48dp);
+        englishImage.setImageResource(R.drawable.ic_english_gray_400_48dp);
         englishText.setTextColor(Color.parseColor(textCleanColor));
 
-        politicalImage.setImageResource(R.drawable.ic_political_gray_48dp);
+        politicalImage.setImageResource(R.drawable.ic_political_gray_400_48dp);
         politicalText.setTextColor(Color.parseColor(textCleanColor));
 
 
-        majorImage.setImageResource(R.drawable.ic_major_gray_48dp);
+        majorImage.setImageResource(R.drawable.ic_major_gray_400_48dp);
         majorText.setTextColor(Color.parseColor(textCleanColor));
     }
 

@@ -1,8 +1,8 @@
 <resources>
 
     <style name="AppTheme" parent="AppBaseTheme">
-        <item name="android:statusBarColor">@color/drak_primary_color</item>
-        <item name="android:navigationBarColor">@color/drak_primary_color</item>
+        <item name="android:statusBarColor">@color/drak_primary_color_1</item>
+        <item name="android:navigationBarColor">@color/drak_primary_color_1</item>
     </style>
 
 

@@ -56,14 +56,15 @@ public class MathFragment extends HeaderFragment {
      */
 //    private boolean isOnce ;
     @Override
-    public void onAttach(Activity activity) {
+    public void onAttach(final Activity activity) {
         super.onAttach(activity);
         setHeaderBackgroundScrollMode(HEADER_BACKGROUND_SCROLL_PARALLAX);
         setOnHeaderScrollChangedListener(new OnHeaderScrollChangedListener() {
             @Override
             public void onHeaderScrollChanged(float progress, int height, int scroll) {
-                height -= getActivity().getActionBar().getHeight();
+//                height -= getActivity().getActionBar().getHeight();
 
+                height -= ((MainActivity) activity).getMyActionbar().getHeight();
                 progress = (float) scroll / height;
                 if (progress > 1f) progress = 1f;
 
@@ -75,7 +76,7 @@ public class MathFragment extends HeaderFragment {
                 // `````````*
                 progress = (1 - (float) Math.cos(progress * Math.PI)) * 0.5f;
 
-                ((MainActivity) getActivity())
+                ((MainActivity) activity)
                         .getFadingActionBarHelper()
                         .setActionBarAlpha((int) (255 * progress));
             }

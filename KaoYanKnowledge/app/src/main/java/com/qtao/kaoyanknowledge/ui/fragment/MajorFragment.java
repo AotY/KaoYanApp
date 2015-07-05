@@ -10,8 +10,15 @@ import android.view.ViewGroup;
 import com.qtao.kaoyanknowledge.R;
 import com.qtao.kaoyanknowledge.ui.MainActivity;
 
-
 public class MajorFragment  extends Fragment {
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        ((MainActivity) activity).getFadingActionBarHelper().setActionBarAlpha(255);
+    }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -21,10 +28,5 @@ public class MajorFragment  extends Fragment {
         return contactsLayout;
     }
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        ((MainActivity) getActivity()).getFadingActionBarHelper().setActionBarAlpha(255);
-    }
 
 }

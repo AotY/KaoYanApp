@@ -37,7 +37,7 @@ public class PoliticalFragment extends Fragment {
      */
     private EnglishAdapter mAdapter;
 
-    private int actionbarHeight ;
+    private int actionbarHeight;
 
     @Override
     public void onAttach(Activity activity) {
@@ -62,7 +62,7 @@ public class PoliticalFragment extends Fragment {
     }
 
     private void initView() {
-        actionbarHeight = activity.getActionBar().getHeight() ;
+        actionbarHeight = activity.getActionBar().getHeight();
 
         recyclerView = (RecyclerView) activity.findViewById(R.id.political_recycle_view);
         RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) recyclerView.getLayoutParams();
@@ -93,6 +93,7 @@ public class PoliticalFragment extends Fragment {
         // Bind adapter to list
         recyclerView.setAdapter(mAdapter);
     }
+
     private List<EnglishItem> getContacts() {
         List<EnglishItem> contacts = new ArrayList<>();
         contacts.add(new EnglishItem(1, "Adam", R.drawable.photo, "4153508881"));

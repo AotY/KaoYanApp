@@ -1,11 +1,9 @@
 package com.qtao.kaoyanknowledge.models;
 
-import java.io.Serializable;
-
 /**
  * Created by AotY on 2015/7/3.
  */
-public class MathItem implements Serializable {
+public class MathItem {
 
     /**
      * 类型

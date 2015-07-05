@@ -60,7 +60,7 @@ public class MathAdapter extends BaseAdapter {
         }
         holder = (ViewHolder) convertView.getTag();
 
-       MathItem math = datas.get(position);
+        MathItem math = datas.get(position);
 
         holder.nameText.setText(math.getName());
         holder.contenText.setText(math.getContent());

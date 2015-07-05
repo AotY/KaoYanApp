@@ -25,16 +25,15 @@ public class PoliticalAdapter extends RecyclerView.Adapter<PoliticalAdapter.VH> 
 //    private List<Integer> mHeights;
 
 
-    public interface onRecyclerViewItemClickListener {
-        public void onRecyclerViewItemClick(View view, EnglishItem contact);
+    public interface onRecyclerViewItemClickListener{
+        public void onRecyclerViewItemClick(View view, EnglishItem contact) ;
     }
 
-    private onRecyclerViewItemClickListener listener;
+    private onRecyclerViewItemClickListener listener ;
 
-    public void setOnRecyclerViewItemClickListener(onRecyclerViewItemClickListener listener) {
-        this.listener = listener;
+    public void setOnRecyclerViewItemClickListener(onRecyclerViewItemClickListener listener){
+        this.listener = listener ;
     }
-
     public PoliticalAdapter(Activity context, List<EnglishItem> contacts) {
         mContext = context;
         if (contacts == null) {

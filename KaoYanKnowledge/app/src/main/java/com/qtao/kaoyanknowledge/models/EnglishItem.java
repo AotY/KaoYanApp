@@ -1,4 +1,5 @@
 package com.qtao.kaoyanknowledge.models;
+
 import java.io.Serializable;
 
 // Container class to hold Contact information.
