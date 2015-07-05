@@ -15,6 +15,7 @@ import com.qtao.kaoyanknowledge.R;
 import com.qtao.kaoyanknowledge.adapter.EnglishAdapter;
 import com.qtao.kaoyanknowledge.models.EnglishItem;
 import com.qtao.kaoyanknowledge.ui.BaseActivity;
+import com.qtao.kaoyanknowledge.ui.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +57,7 @@ public class EnglishFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        ((MainActivity) getActivity()).getTintManager().setStatusBarAlpha(255);
         ((BaseActivity) getActivity()).getFadingActionBarHelper().setActionBarAlpha(255);
         initView();
     }
@@ -65,7 +67,7 @@ public class EnglishFragment extends Fragment {
 
         recyclerView = (RecyclerView) getActivity().findViewById(R.id.english_recycle_view);
         RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) recyclerView.getLayoutParams();
-        lp.topMargin = actionbarHeight;
+        lp.topMargin = actionbarHeight + 50;
         recyclerView.setLayoutParams(lp);
 
         // allows for optimizations

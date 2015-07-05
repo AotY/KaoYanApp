@@ -20,6 +20,7 @@ import com.qtao.kaoyanknowledge.ui.fragment.MajorFragment;
 import com.qtao.kaoyanknowledge.ui.fragment.MathFragment;
 import com.qtao.kaoyanknowledge.ui.fragment.PoliticalFragment;
 import com.qtao.kaoyanknowledge.utils.L;
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
@@ -125,24 +126,48 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     /**
      * 用于保存页面的名字
      */
-    private static final String Channel = "channel" ;
+    private static final String Channel = "channel";
 
     /**
      * 用于记录当前的Tad ,即当前在那个页面
      */
     private int curTad;
 
+
+    private SystemBarTintManager tintManager;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-
         // 初始化布局元素
         initViews();
         fragmentManager = getFragmentManager();
         // 第一次启动时选中第0个tab
         setTabSelection(0);
+        intiStatusBar();
+    }
+
+
+    private void intiStatusBar() {
+        // 创建状态栏的管理实例
+        tintManager = new SystemBarTintManager(this);
+        tintManager.setStatusBarTintEnabled(true);
+        tintManager.setStatusBarAlpha(0f);
+        tintManager.setStatusBarTintResource(R.color.drak_primary_color_1);
+//        tintManager.setTintAlpha(0f);
+    }
+
+    /**
+     * 获取状态栏管理实例
+     */
+    public SystemBarTintManager getTintManager() {
+        if (tintManager == null) {
+            tintManager = new SystemBarTintManager(this);
+        }
+        return tintManager;
     }
 
 
@@ -156,13 +181,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt(Channel , curTad);
+        outState.putInt(Channel, curTad);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        if(savedInstanceState != null){
+        if (savedInstanceState != null) {
             setTabSelection(savedInstanceState.getInt(Channel));
         }
     }
@@ -219,7 +244,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
      * @param index 每个tab页对应的下标。0表示消息，1表示联系人，2表示动态，3表示设置。
      */
     private void setTabSelection(int index) {
-        curTad = index ;
+        curTad = index;
         // 每次选中之前先清楚掉上次的选中状态
         clearSelection();
         // 开启一个Fragment事务
@@ -308,7 +333,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         majorImage.setImageResource(R.drawable.ic_major_gray_400_48dp);
         majorText.setTextColor(Color.parseColor(textCleanColor));
     }
-
 
 
     @Override

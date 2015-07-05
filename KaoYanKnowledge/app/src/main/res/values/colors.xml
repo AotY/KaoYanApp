@@ -15,5 +15,5 @@
     <color name="secondary_text">#727272</color>
     <color name="divider_color">#B6B6B6</color>
     <color name="divider_color2">#B6B6B6B6</color>
-    <color name="transparent">#00000000</color>
+    <color name="transparent">#00FF0000</color>
 </resources>

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:print="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
+
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
 
         <TextView
@@ -18,6 +20,15 @@
             android:padding="10dp"
             android:text="专业知识"
             android:textSize="20sp" />
+
+        <com.github.johnkil.print.PrintView
+            android:id="@+id/icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/ic_adb_description"
+            print:p_iconText="@string/ic_material_add_alarm"
+            print:p_iconColor="@color/icon"
+            print:p_iconSize="180dp" />
     </LinearLayout>
 
 </RelativeLayout>

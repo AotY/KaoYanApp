@@ -3,6 +3,9 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <item name="android:statusBarColor">@color/drak_primary_color_1</item>
         <item name="android:navigationBarColor">@color/drak_primary_color_1</item>
+        <!--<item name="android:windowTranslucentStatus">true</item>-->
+        <item name="android:windowTranslucentStatus">true</item>
+        <!--<item name="android:windowTranslucentNavigation">true</item>-->
     </style>
 
 

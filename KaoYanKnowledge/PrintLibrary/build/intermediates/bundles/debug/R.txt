@@ -1,0 +1,11 @@
+int attr p_iconCode 0x7f010001
+int attr p_iconColor 0x7f010002
+int attr p_iconFont 0x7f010004
+int attr p_iconSize 0x7f010003
+int attr p_iconText 0x7f010000
+int[] styleable PrintView { 0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003, 0x7f010004 }
+int styleable PrintView_p_iconCode 1
+int styleable PrintView_p_iconColor 2
+int styleable PrintView_p_iconFont 4
+int styleable PrintView_p_iconSize 3
+int styleable PrintView_p_iconText 0

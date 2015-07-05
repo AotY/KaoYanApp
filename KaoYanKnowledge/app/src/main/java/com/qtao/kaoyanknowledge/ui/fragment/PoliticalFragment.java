@@ -15,6 +15,7 @@ import com.qtao.kaoyanknowledge.R;
 import com.qtao.kaoyanknowledge.adapter.EnglishAdapter;
 import com.qtao.kaoyanknowledge.models.EnglishItem;
 import com.qtao.kaoyanknowledge.ui.BaseActivity;
+import com.qtao.kaoyanknowledge.ui.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +54,7 @@ public class PoliticalFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ((BaseActivity) getActivity()).getFadingActionBarHelper().setActionBarAlpha(255);
+        ((MainActivity) getActivity()).getTintManager().setStatusBarAlpha(255);
         initView();
     }
 
@@ -61,10 +63,9 @@ public class PoliticalFragment extends Fragment {
 
         recyclerView = (RecyclerView) getActivity().findViewById(R.id.political_recycle_view);
         RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) recyclerView.getLayoutParams();
-        lp.topMargin = actionbarHeight;
+        lp.topMargin = actionbarHeight + 50;
         recyclerView.setLayoutParams(lp);
 
-        // allows for optimizations
         recyclerView.setHasFixedSize(true);
 
         // Define 2 column grid layout

@@ -3,12 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="220dp">
 
-    <ImageView
-        android:id="@android:id/background"
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/math_logo2" />
+
+    <com.andexert.library.RippleView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        rv_centered="true">
+
+        <ImageView
+            android:id="@android:id/background"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/math_logo2" />
+
+    </com.andexert.library.RippleView>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -28,20 +36,14 @@
             android:text="数学"
             style="@style/Header.TitleText" />
 
-        <TextView
-            android:id="@+id/subtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="一二三"
-            style="@style/Header.SubTitleText" />
 
     </LinearLayout>
 
-    <View
-        android:id="@android:id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="?android:actionBarSize"
-        android:background="@drawable/header_ab_shadow" />
+    <!--<View-->
+    <!--android:id="@android:id/title"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="?android:actionBarSize"-->
+    <!--android:background="@drawable/header_ab_shadow" />-->
 
 
 </FrameLayout>

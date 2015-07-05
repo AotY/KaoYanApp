@@ -30,6 +30,7 @@ import com.qtao.kaoyanknowledge.R;
 import com.qtao.kaoyanknowledge.adapter.MathAdapter;
 import com.qtao.kaoyanknowledge.models.MathItem;
 import com.qtao.kaoyanknowledge.ui.BaseActivity;
+import com.qtao.kaoyanknowledge.ui.MainActivity;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -51,10 +52,6 @@ public class MathFragment extends HeaderFragment {
     private AsyncLoadSomething mAsyncLoadSomething;
     private FrameLayout mContentOverlay;
 
-    /**
-     * 加载一次
-     */
-//    private boolean isOnce ;
     @Override
     public void onAttach(final Activity activity) {
         super.onAttach(activity);
@@ -68,26 +65,18 @@ public class MathFragment extends HeaderFragment {
                 progress = (float) scroll / height;
                 if (progress > 1f) progress = 1f;
 
-                // *
-                // `*
-                // ```*
-                // ``````*
-                // ````````*
-                // `````````*
                 progress = (1 - (float) Math.cos(progress * Math.PI)) * 0.5f;
 
                 ((BaseActivity) activity)
                         .getFadingActionBarHelper()
                         .setActionBarAlpha((int) (255 * progress));
+                ((MainActivity) activity).getTintManager().setStatusBarAlpha((255 * progress));
             }
         });
 
-//        if(!isOnce) {
         cancelAsyncTask(mAsyncLoadSomething);
         mAsyncLoadSomething = new AsyncLoadSomething(this);
         mAsyncLoadSomething.execute();
-//            isOnce = true ;
-//        }
     }
 
     @Override
@@ -174,6 +163,7 @@ public class MathFragment extends HeaderFragment {
             datas.add(item2);
             datas.add(item3);
             datas.add(item4);
+            datas.add(item5);
 //            try {
 //                Thread.sleep(3000);
 //            } catch (InterruptedException e) {

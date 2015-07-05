@@ -13,6 +13,7 @@ import com.qtao.kaoyanknowledge.utils.L;
  */
 public class BaseActivity extends Activity {
 
+
     /**
      * Actionbar
      */
@@ -29,7 +30,18 @@ public class BaseActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initActionBar();
+
+
+//        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+
+//            getWindow().setStatusBarColor(0x00000000);//windowTranslucentStatus
+//            getWindow().setStatusBarColor();
+//        }
+
     }
+
+
+
 
     private void initActionBar() {
         actionBar = getActionBar();
@@ -66,6 +78,7 @@ public class BaseActivity extends Activity {
 
     /**
      * 获取FadingActionBarHelper
+     *
      * @return FadingActionBarHelper
      */
     public FadingActionBarHelper getFadingActionBarHelper() {

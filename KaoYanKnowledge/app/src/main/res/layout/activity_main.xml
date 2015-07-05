@@ -1,141 +1,162 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/content"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/divider_color2" />
+        <FrameLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-    <LinearLayout
-        android:paddingTop="3dp"
-        android:paddingBottom="3dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/text_icons">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider_color2" />
 
-        <RelativeLayout
-            android:id="@+id/math_layout"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+        <LinearLayout
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/text_icons">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:orientation="vertical">
+            <com.andexert.library.RippleView
+                rv_centered="true"
+                android:id="@+id/math_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
-                <ImageView
-                    android:id="@+id/math_image"
-                    android:layout_width="wrap_content"
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ic_math_white_48dp" />
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/math_text"
-                    android:layout_width="wrap_content"
+
+                    <ImageView
+                        android:id="@+id/math_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/ic_math_white_48dp" />
+
+
+                    <TextView
+                        android:id="@+id/math_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="数学"
+                        android:textColor="@color/secondary_text" />
+                </LinearLayout>
+            </com.andexert.library.RippleView>
+
+
+            <com.andexert.library.RippleView
+                rv_centered="true"
+                android:id="@+id/english_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="数学"
-                    android:textColor="@color/secondary_text" />
-            </LinearLayout>
-        </RelativeLayout>
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical">
 
-        <RelativeLayout
-            android:id="@+id/english_layout"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/english_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/ic_english_white_48dp" />
 
-                <ImageView
-                    android:id="@+id/english_image"
-                    android:layout_width="wrap_content"
+
+                    <TextView
+                        android:id="@+id/english_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="英语"
+                        android:textColor="@color/secondary_text" />
+                </LinearLayout>
+            </com.andexert.library.RippleView>
+
+            <com.andexert.library.RippleView
+                rv_centered="true"
+                android:id="@+id/political_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ic_english_white_48dp" />
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/english_text"
-                    android:layout_width="wrap_content"
+
+                    <ImageView
+                        android:id="@+id/political_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/ic_political_white_48dp" />
+
+
+                    <TextView
+                        android:id="@+id/political_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="政治"
+                        android:textColor="@color/secondary_text" />
+                </LinearLayout>
+            </com.andexert.library.RippleView>
+
+            <com.andexert.library.RippleView
+                rv_centered="true"
+                android:id="@+id/major_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="英语"
-                    android:textColor="@color/secondary_text" />
-            </LinearLayout>
-        </RelativeLayout>
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical">
 
-        <RelativeLayout
-            android:id="@+id/political_layout"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/major_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/ic_major_white_48dp" />
 
-                <ImageView
-                    android:id="@+id/political_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ic_political_white_48dp" />
 
-                <TextView
-                    android:id="@+id/political_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="政治"
-                    android:textColor="@color/secondary_text"/>
-            </LinearLayout>
-        </RelativeLayout>
+                    <TextView
+                        android:id="@+id/major_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="专业"
+                        android:textColor="@color/secondary_text" />
+                </LinearLayout>
+            </com.andexert.library.RippleView>
+        </LinearLayout>
 
-        <RelativeLayout
-            android:id="@+id/major_layout"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/major_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ic_major_white_48dp" />
-
-                <TextView
-                    android:id="@+id/major_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="专业"
-                    android:textColor="@color/secondary_text" />
-            </LinearLayout>
-        </RelativeLayout>
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
