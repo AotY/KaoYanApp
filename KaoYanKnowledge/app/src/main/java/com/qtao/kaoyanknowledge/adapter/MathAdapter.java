@@ -5,31 +5,43 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.amulyakhare.textdrawable.TextDrawable;
 import com.qtao.kaoyanknowledge.R;
 import com.qtao.kaoyanknowledge.models.MathItem;
-import com.squareup.picasso.Picasso;
+import com.qtao.kaoyanknowledge.utils.DrawableProvider;
+import com.qtao.kaoyanknowledge.utils.L;
 
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 /**
  * Created by AotY on 2015/7/3.
+ * <p/>
+ * 数学页面中ListView的适配器
  */
 public class MathAdapter extends BaseAdapter {
 
+    /**
+     * 数据
+     */
     private List<MathItem> datas;
 
     private Context mContext;
 
-    private LayoutInflater inflater ;
+    private LayoutInflater inflater;
 
-    public MathAdapter(Context context , List<MathItem> datas){
-        this.mContext = context ;
-        this.datas = datas ;
+    /**
+     * 颜色生成器
+     */
+    private final DrawableProvider drawableProvider;
+
+    public MathAdapter(Context context, List<MathItem> datas) {
+        this.mContext = context;
+        this.datas = datas;
         inflater = LayoutInflater.from(context);
+        drawableProvider = new DrawableProvider(context);
     }
 
     @Override
@@ -50,30 +62,54 @@ public class MathAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
-        if(convertView == null){
-            convertView = inflater.inflate(R.layout.math_item_layout , null , false ) ;
-            holder = new ViewHolder() ;
-            holder.circleImageView = (CircleImageView) convertView.findViewById(R.id.math_item_image);
+        if (convertView == null) {
+            holder = new ViewHolder();
+            convertView = inflater.inflate(R.layout.math_item_layout, null, false);
+//            holder.circleImageView = (CircleImageView) convertView.findViewById(R.id.math_item_image);
+            holder.rootView =  convertView.findViewById(R.id.math_item_container);;
+            holder.imageView = (ImageView) convertView.findViewById(R.id.math_item_image);
             holder.nameText = (TextView) convertView.findViewById(R.id.item_math_name);
             holder.contenText = (TextView) convertView.findViewById(R.id.item_math_content);
             convertView.setTag(holder);
         }
         holder = (ViewHolder) convertView.getTag();
-
-        MathItem math = datas.get(position);
-
+        final MathItem math = datas.get(position);
         holder.nameText.setText(math.getName());
         holder.contenText.setText(math.getContent());
-        Picasso.with(mContext).load(math.getImg()).into(holder.circleImageView);
+        TextDrawable imgDrawable = drawableProvider.getRoundWithBorder(math.getBerif());
+        holder.imageView.setImageDrawable(imgDrawable);
+        holder.rootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onMathItemClick(v, math);
+                }
+                L.e("holder.rootView.setOnClickListener");
+            }
+        });
+//        Picasso.with(mContext).load(math.getImg()).into(holder.imageView);
         return convertView;
     }
 
-    private class ViewHolder{
-        public ViewHolder(){
+    private class ViewHolder {
+        public ViewHolder() {
 
         }
-        CircleImageView circleImageView;
+
+        View rootView;
+        //        CircleImageView circleImageView;
+        ImageView imageView;
         TextView nameText;
         TextView contenText;
+    }
+
+    private OnMathItemClickListener listener;
+
+    public void setOnMathItemClickListener(OnMathItemClickListener listener) {
+        this.listener = listener;
+    }
+
+    public interface OnMathItemClickListener {
+        public void onMathItemClick(View v, MathItem math);
     }
 }

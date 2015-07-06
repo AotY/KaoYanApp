@@ -9,16 +9,23 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.OvershootInterpolator;
 import android.widget.RelativeLayout;
 
+import com.github.johnpersano.supertoasts.SuperToast;
+import com.github.johnpersano.supertoasts.util.Style;
+import com.qtao.kaoyanknowledge.App.KaoYanApplication;
 import com.qtao.kaoyanknowledge.R;
 import com.qtao.kaoyanknowledge.adapter.EnglishAdapter;
-import com.qtao.kaoyanknowledge.models.EnglishItem;
+import com.qtao.kaoyanknowledge.models.EngAndPolItem;
 import com.qtao.kaoyanknowledge.ui.BaseActivity;
 import com.qtao.kaoyanknowledge.ui.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import jp.wasabeef.recyclerview.animators.adapters.AlphaInAnimationAdapter;
+import jp.wasabeef.recyclerview.animators.adapters.ScaleInAnimationAdapter;
 
 /**
  * onAttach方法：Fragment和Activity建立关联的时候调用。
@@ -27,10 +34,10 @@ import java.util.List;
  * onDestroyView方法：Fragment中的布局被移除时调用。
  * onDetach方法：Fragment和Activity解除关联的时候调用。
  */
-public class EnglishFragment extends Fragment {
+public class EnglishFragment extends Fragment implements EnglishAdapter.onRecyclerViewItemClickListener {
 
     /**
-     *
+     * RecyclerView View
      */
     private RecyclerView recyclerView;
 
@@ -39,7 +46,7 @@ public class EnglishFragment extends Fragment {
      */
     private EnglishAdapter mAdapter;
 
-    private int actionbarHeight ;
+
 
     @Override
     public void onAttach(Activity activity) {
@@ -63,11 +70,9 @@ public class EnglishFragment extends Fragment {
     }
 
     private void initView() {
-        actionbarHeight = ((BaseActivity) getActivity()).getMyActionbar().getHeight() ;
-
         recyclerView = (RecyclerView) getActivity().findViewById(R.id.english_recycle_view);
         RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) recyclerView.getLayoutParams();
-        lp.topMargin = actionbarHeight + 50;
+        lp.topMargin = ((BaseActivity) getActivity()).actionbarHeight + ((BaseActivity) getActivity()).statusHeight+ 50;
         recyclerView.setLayoutParams(lp);
 
         // allows for optimizations
@@ -83,26 +88,40 @@ public class EnglishFragment extends Fragment {
 
         // Unlike ListView, you have to explicitly give a LayoutManager to the RecyclerView to position items on the screen.
         // There are three LayoutManager provided at the moment: GridLayoutManager, StaggeredGridLayoutManager and LinearLayoutManager.
-//        rvContacts.setLayoutManager(layout);
 
         // get data
-        List<EnglishItem> contacts = getContacts();
+        List<EngAndPolItem> contacts = getDatas();
 
         // Create an adapter
         mAdapter = new EnglishAdapter(getActivity(), contacts);
-
-        // Bind adapter to list
-        recyclerView.setAdapter(mAdapter);
-    }
-    private List<EnglishItem> getContacts() {
-        List<EnglishItem> contacts = new ArrayList<>();
-        contacts.add(new EnglishItem(1, "Adam", R.drawable.photo, "4153508881"));
-        contacts.add(new EnglishItem(2, "Sarah", R.drawable.photo, "4153508882"));
-        contacts.add(new EnglishItem(3, "Bob", R.drawable.photo, "4153508883"));
-        contacts.add(new EnglishItem(4, "John", R.drawable.photo, "4153508884"));
-        contacts.add(new EnglishItem(5, "Jill", R.drawable.photo, "4153508885"));
-        return contacts;
+        mAdapter.setOnRecyclerViewItemClickListener(this);
+        AlphaInAnimationAdapter alphaAdapter = new AlphaInAnimationAdapter(mAdapter);
+        alphaAdapter.setDuration(1000);
+        alphaAdapter.setInterpolator(new OvershootInterpolator());
+        recyclerView.setAdapter(new ScaleInAnimationAdapter(alphaAdapter));
     }
 
+    private List<EngAndPolItem> getDatas() {
+        List<EngAndPolItem> datas = new ArrayList<>();
+        datas.add(new EngAndPolItem(1, "英语一", "一"));
+        datas.add(new EngAndPolItem(2, "英语二", "二"));
+        datas.add(new EngAndPolItem(3, "高频单词", "单"));
+        datas.add(new EngAndPolItem(4, "高频句型", "句"));
+        datas.add(new EngAndPolItem(5, "作文模板", "作"));
+        datas.add(new EngAndPolItem(6, " 资料推荐", "料"));
+        datas.add(new EngAndPolItem(5, "复习技巧", "巧"));
+        return datas;
+    }
 
+
+    /**
+     * 点击item
+     *
+     * @param view
+     */
+    @Override
+    public void onRecyclerViewItemClick(View view, EngAndPolItem engAndPolItem) {
+        SuperToast.create(KaoYanApplication.appContext, "" + engAndPolItem.getName(), SuperToast.Duration.SHORT,
+                Style.getStyle(Style.BLUE, SuperToast.Animations.SCALE)).show();
+    }
 }

@@ -20,7 +20,6 @@ import com.qtao.kaoyanknowledge.ui.fragment.MajorFragment;
 import com.qtao.kaoyanknowledge.ui.fragment.MathFragment;
 import com.qtao.kaoyanknowledge.ui.fragment.PoliticalFragment;
 import com.qtao.kaoyanknowledge.utils.L;
-import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
@@ -134,7 +133,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private int curTad;
 
 
-    private SystemBarTintManager tintManager;
+
 
 
     @Override
@@ -147,28 +146,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         fragmentManager = getFragmentManager();
         // 第一次启动时选中第0个tab
         setTabSelection(0);
-        intiStatusBar();
+
     }
 
-
-    private void intiStatusBar() {
-        // 创建状态栏的管理实例
-        tintManager = new SystemBarTintManager(this);
-        tintManager.setStatusBarTintEnabled(true);
-        tintManager.setStatusBarAlpha(0f);
-        tintManager.setStatusBarTintResource(R.color.drak_primary_color_1);
-//        tintManager.setTintAlpha(0f);
-    }
-
-    /**
-     * 获取状态栏管理实例
-     */
-    public SystemBarTintManager getTintManager() {
-        if (tintManager == null) {
-            tintManager = new SystemBarTintManager(this);
-        }
-        return tintManager;
-    }
 
 
     @Override

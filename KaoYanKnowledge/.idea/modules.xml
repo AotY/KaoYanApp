@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/KaoYanKnowledge.iml" filepath="$PROJECT_DIR$/KaoYanKnowledge.iml" />
       <module fileurl="file://$PROJECT_DIR$/PrintLibrary/PrintLibrary.iml" filepath="$PROJECT_DIR$/PrintLibrary/PrintLibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TextDrawableLibrary/TextDrawableLibrary.iml" filepath="$PROJECT_DIR$/TextDrawableLibrary/TextDrawableLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

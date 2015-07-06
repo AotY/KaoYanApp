@@ -9,6 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/PrintLibrary" />
+            <option value="$PROJECT_DIR$/TextDrawableLibrary" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>

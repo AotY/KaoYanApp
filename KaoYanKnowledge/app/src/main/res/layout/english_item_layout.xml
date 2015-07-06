@@ -25,7 +25,7 @@
                 rv_centered="true">
 
                 <ImageView
-                    android:id="@+id/ivProfile"
+                    android:id="@+id/english_item_img"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/grid_profile_height"
                     android:scaleType="centerCrop" />
@@ -42,12 +42,12 @@
                     android:layout_height="match_parent" />
 
                 <TextView
-                    android:id="@+id/tvName"
+                    android:id="@+id/english_item_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:textSize="@dimen/contact_text_size"
-                    android:textColor="@android:color/black" />
+                    android:textColor="@color/primary_text" />
             </RelativeLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>

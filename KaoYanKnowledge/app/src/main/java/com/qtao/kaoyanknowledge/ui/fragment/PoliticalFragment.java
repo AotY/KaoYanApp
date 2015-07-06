@@ -9,19 +9,25 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.OvershootInterpolator;
 import android.widget.RelativeLayout;
 
+import com.github.johnpersano.supertoasts.SuperToast;
+import com.github.johnpersano.supertoasts.util.Style;
+import com.qtao.kaoyanknowledge.App.KaoYanApplication;
 import com.qtao.kaoyanknowledge.R;
-import com.qtao.kaoyanknowledge.adapter.EnglishAdapter;
-import com.qtao.kaoyanknowledge.models.EnglishItem;
+import com.qtao.kaoyanknowledge.adapter.PoliticalAdapter;
+import com.qtao.kaoyanknowledge.models.EngAndPolItem;
 import com.qtao.kaoyanknowledge.ui.BaseActivity;
 import com.qtao.kaoyanknowledge.ui.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PoliticalFragment extends Fragment {
+import jp.wasabeef.recyclerview.animators.adapters.AlphaInAnimationAdapter;
+import jp.wasabeef.recyclerview.animators.adapters.ScaleInAnimationAdapter;
 
+public class PoliticalFragment extends Fragment implements PoliticalAdapter.onRecyclerViewItemClickListener {
 
     /**
      *
@@ -32,9 +38,9 @@ public class PoliticalFragment extends Fragment {
     /**
      *
      */
-    private EnglishAdapter mAdapter;
+    private PoliticalAdapter mAdapter;
 
-    private int actionbarHeight;
+//    private int actionbarHeight;
 
     @Override
     public void onAttach(Activity activity) {
@@ -59,11 +65,11 @@ public class PoliticalFragment extends Fragment {
     }
 
     private void initView() {
-        actionbarHeight = ((BaseActivity) getActivity()).getMyActionbar().getHeight();
+//        actionbarHeight = ((BaseActivity) getActivity()).getMyActionbar().getHeight();
 
         recyclerView = (RecyclerView) getActivity().findViewById(R.id.political_recycle_view);
         RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) recyclerView.getLayoutParams();
-        lp.topMargin = actionbarHeight + 50;
+        lp.topMargin = ((BaseActivity) getActivity()).actionbarHeight + ((BaseActivity) getActivity()).statusHeight+ 50;
         recyclerView.setLayoutParams(lp);
 
         recyclerView.setHasFixedSize(true);
@@ -81,23 +87,34 @@ public class PoliticalFragment extends Fragment {
 //        rvContacts.setLayoutManager(layout);
 
         // get data
-        List<EnglishItem> contacts = getContacts();
+        List<EngAndPolItem> contacts = getDatas();
 
         // Create an adapter
-        mAdapter = new EnglishAdapter(getActivity(), contacts);
-
-        // Bind adapter to list
-        recyclerView.setAdapter(mAdapter);
+        mAdapter = new PoliticalAdapter(getActivity(), contacts);
+        mAdapter.setOnRecyclerViewItemClickListener(this);
+        AlphaInAnimationAdapter alphaAdapter = new AlphaInAnimationAdapter(mAdapter);
+        alphaAdapter.setDuration(1000);
+        alphaAdapter.setInterpolator(new OvershootInterpolator());
+        recyclerView.setAdapter(new ScaleInAnimationAdapter(alphaAdapter));
     }
 
-    private List<EnglishItem> getContacts() {
-        List<EnglishItem> contacts = new ArrayList<>();
-        contacts.add(new EnglishItem(1, "Adam", R.drawable.photo, "4153508881"));
-        contacts.add(new EnglishItem(2, "Sarah", R.drawable.photo, "4153508882"));
-        contacts.add(new EnglishItem(3, "Bob", R.drawable.photo, "4153508883"));
-        contacts.add(new EnglishItem(4, "John", R.drawable.photo, "4153508884"));
-        contacts.add(new EnglishItem(5, "Jill", R.drawable.photo, "4153508885"));
-        return contacts;
+    private List<EngAndPolItem> getDatas() {
+        List<EngAndPolItem> datas = new ArrayList<>();
+        datas.add(new EngAndPolItem(1, "马哲", "马"));
+        datas.add(new EngAndPolItem(2, "政经", "经"));
+        datas.add(new EngAndPolItem(3, "毛概", "毛"));
+        datas.add(new EngAndPolItem(4, "邓三", "三"));
+        datas.add(new EngAndPolItem(5, " 资料推荐", "料"));
+        datas.add(new EngAndPolItem(6, "复习技巧", "巧"));
+        return datas;
     }
 
+    /**
+     * @param view
+     */
+    @Override
+    public void onRecyclerViewItemClick(View view, EngAndPolItem engAndPolItem) {
+        SuperToast.create(KaoYanApplication.appContext, "" + engAndPolItem.getName(), SuperToast.Duration.SHORT,
+                Style.getStyle(Style.BLUE, SuperToast.Animations.SCALE)).show();
+    }
 }

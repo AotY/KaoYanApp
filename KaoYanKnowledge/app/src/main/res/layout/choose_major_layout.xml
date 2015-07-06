@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="20dp"
+    android:layout_height="match_parent">
+
+   <!-- <TextView
+        android:padding="5dp"
+        android:textSize="16sp"
+        android:text="Last Clicked:"
+        android:textColor="@color/primary_text"
+        android:background="@color/primary_color_1"
+        android:id="@+id/major_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />-->
+
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/major_choose_container"></RelativeLayout>
+
+
+</LinearLayout>
