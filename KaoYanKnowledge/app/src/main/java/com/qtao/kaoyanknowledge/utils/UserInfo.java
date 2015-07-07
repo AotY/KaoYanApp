@@ -12,6 +12,8 @@ public class UserInfo {
 
     public static final String USERMAJOR = "major";
 
+    public static final String ISALWAYSCHOOSE = "isalwayschoose";
+
 
     /**
      * 保存用户的专业
@@ -27,6 +29,18 @@ public class UserInfo {
     }
 
     /**
+     * 清除用户的专业
+     *
+     * @param context
+     */
+    public static void clearUserMajor(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(USERINFO, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(USERMAJOR, null);
+        editor.commit();
+    }
+
+    /**
      * 获取用户的专业
      *
      * @param context
@@ -36,6 +50,29 @@ public class UserInfo {
         String major = preferences.getString(USERMAJOR, null);
         return major;
     }
+
+    /**
+     * 获取用户选择
+     *
+     * @param context
+     */
+    public static boolean getUserChooseEnterMajor(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(USERINFO, Context.MODE_PRIVATE);
+        boolean b = preferences.getBoolean(ISALWAYSCHOOSE, false);
+        return b;
+    }
+    /**
+     * 保存用户选择
+     *
+     * @param context
+     */
+    public static void setUserChooseEnterMajor(Context context , boolean b) {
+        SharedPreferences preferences = context.getSharedPreferences(USERINFO, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean(ISALWAYSCHOOSE, b);
+        editor.commit();
+    }
+
 
 
 }

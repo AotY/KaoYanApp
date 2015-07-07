@@ -40,7 +40,10 @@ public class PoliticalFragment extends Fragment implements PoliticalAdapter.onRe
      */
     private PoliticalAdapter mAdapter;
 
-//    private int actionbarHeight;
+    /**
+     * @param activity
+     */
+    private Activity activity;
 
     @Override
     public void onAttach(Activity activity) {
@@ -59,17 +62,18 @@ public class PoliticalFragment extends Fragment implements PoliticalAdapter.onRe
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((BaseActivity) getActivity()).getFadingActionBarHelper().setActionBarAlpha(255);
-        ((MainActivity) getActivity()).getTintManager().setStatusBarAlpha(255);
+        activity = getActivity();
+        ((BaseActivity) activity).getFadingActionBarHelper().setActionBarAlpha(255);
+        ((MainActivity) activity).getTintManager().setStatusBarAlpha(255);
+        ((BaseActivity) activity).setTitle(R.string.political);
         initView();
     }
 
     private void initView() {
-//        actionbarHeight = ((BaseActivity) getActivity()).getMyActionbar().getHeight();
-
-        recyclerView = (RecyclerView) getActivity().findViewById(R.id.political_recycle_view);
+//        actionbarHeight = ((BaseActivity) activity).getMyActionbar().getHeight();
+        recyclerView = (RecyclerView) activity.findViewById(R.id.political_recycle_view);
         RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) recyclerView.getLayoutParams();
-        lp.topMargin = ((BaseActivity) getActivity()).actionbarHeight + ((BaseActivity) getActivity()).statusHeight+ 50;
+        lp.topMargin = ((BaseActivity) activity).actionbarHeight + ((BaseActivity) activity).statusHeight+ 50;
         recyclerView.setLayoutParams(lp);
 
         recyclerView.setHasFixedSize(true);
@@ -90,7 +94,7 @@ public class PoliticalFragment extends Fragment implements PoliticalAdapter.onRe
         List<EngAndPolItem> contacts = getDatas();
 
         // Create an adapter
-        mAdapter = new PoliticalAdapter(getActivity(), contacts);
+        mAdapter = new PoliticalAdapter(activity, contacts);
         mAdapter.setOnRecyclerViewItemClickListener(this);
         AlphaInAnimationAdapter alphaAdapter = new AlphaInAnimationAdapter(mAdapter);
         alphaAdapter.setDuration(1000);

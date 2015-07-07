@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.github.johnkil.print.PrintView;
 import com.qtao.kaoyanknowledge.R;
+import com.qtao.kaoyanknowledge.models.MajorItem;
 import com.unnamed.b.atv.model.TreeNode;
 
 /**
@@ -28,12 +29,15 @@ public class IconTreeItemHolder extends TreeNode.BaseNodeViewHolder<IconTreeItem
         final View view = inflater.inflate(R.layout.choose_icon_node, null, false);
 
         nodeTextValue = (TextView) view.findViewById(R.id.choose_node_value);
-        nodeTextValue.setText(value.text);
+        nodeTextValue.setText(value.majorItem.getName());
 
-        final PrintView iconView = (PrintView) view.findViewById(R.id.icon);
+        final PrintView iconView = (PrintView) view.findViewById(R.id.choose_icon);
         iconView.setIconText(context.getResources().getString(value.icon));
 
-        arrowView = (PrintView) view.findViewById(R.id.arrow_icon);
+        arrowView = (PrintView) view.findViewById(R.id.choose_arrow_icon);
+        if (node.isLeaf()) {
+            arrowView.setVisibility(View.INVISIBLE);
+        }
         return view;
     }
 
@@ -44,11 +48,12 @@ public class IconTreeItemHolder extends TreeNode.BaseNodeViewHolder<IconTreeItem
 
     public static class IconTreeItem {
         public int icon;
-        public String text;
+        //        public String text;
+        public MajorItem majorItem;
 
-        public IconTreeItem(int icon, String text) {
+        public IconTreeItem(int icon, MajorItem item) {
             this.icon = icon;
-            this.text = text;
+            this.majorItem = item;
         }
     }
 }

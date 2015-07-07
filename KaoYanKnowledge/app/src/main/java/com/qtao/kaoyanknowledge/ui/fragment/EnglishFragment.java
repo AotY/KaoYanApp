@@ -47,6 +47,10 @@ public class EnglishFragment extends Fragment implements EnglishAdapter.onRecycl
     private EnglishAdapter mAdapter;
 
 
+    /**
+     * @param activity
+     */
+    private Activity activity;
 
     @Override
     public void onAttach(Activity activity) {
@@ -64,15 +68,17 @@ public class EnglishFragment extends Fragment implements EnglishAdapter.onRecycl
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((MainActivity) getActivity()).getTintManager().setStatusBarAlpha(255);
-        ((BaseActivity) getActivity()).getFadingActionBarHelper().setActionBarAlpha(255);
+        activity = getActivity();
+        ((MainActivity) activity).getTintManager().setStatusBarAlpha(255);
+        ((BaseActivity) activity).getFadingActionBarHelper().setActionBarAlpha(255);
+        ((BaseActivity) activity).setTitle(R.string.english);
         initView();
     }
 
     private void initView() {
-        recyclerView = (RecyclerView) getActivity().findViewById(R.id.english_recycle_view);
+        recyclerView = (RecyclerView) activity.findViewById(R.id.english_recycle_view);
         RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) recyclerView.getLayoutParams();
-        lp.topMargin = ((BaseActivity) getActivity()).actionbarHeight + ((BaseActivity) getActivity()).statusHeight+ 50;
+        lp.topMargin = ((BaseActivity) activity).actionbarHeight + ((BaseActivity) activity).statusHeight + 50;
         recyclerView.setLayoutParams(lp);
 
         // allows for optimizations
@@ -93,7 +99,7 @@ public class EnglishFragment extends Fragment implements EnglishAdapter.onRecycl
         List<EngAndPolItem> contacts = getDatas();
 
         // Create an adapter
-        mAdapter = new EnglishAdapter(getActivity(), contacts);
+        mAdapter = new EnglishAdapter(activity, contacts);
         mAdapter.setOnRecyclerViewItemClickListener(this);
         AlphaInAnimationAdapter alphaAdapter = new AlphaInAnimationAdapter(mAdapter);
         alphaAdapter.setDuration(1000);

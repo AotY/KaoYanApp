@@ -1,1 +1,1 @@
-include ':app', ':PrintLibrary', ':TextDrawableLibrary'
+include ':app', ':PrintLibrary', ':TextDrawableLibrary', ':MaterialSettingsLibrary'

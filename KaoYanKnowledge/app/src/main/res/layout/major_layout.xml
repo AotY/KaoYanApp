@@ -1,9 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:print="http://schemas.android.com/apk/res-auto"
     android:id="@+id/major_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical">
+
+    <com.github.johnkil.print.PrintView
+        android:layout_alignParentLeft="true"
+        android:id="@+id/choose_arrow_icon"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        print:p_iconText="@string/ic_material_map"
+        print:p_iconColor="@color/drak_primary_color_1"
+        print:p_iconFont="fonts/material-icon-font.ttf"
+        print:p_iconSize="20dp" />
+
+    <com.github.johnkil.print.PrintView
+        android:layout_alignWithParentIfMissing="true"
+        android:id="@+id/choose_icon"
+        android:layout_toRightOf="@id/choose_arrow_icon"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        print:p_iconText="@string/ic_account_box"
+        print:p_iconColor="@color/primary_color_1"
+        print:p_iconFont="fonts/material-icon-font.ttf"
+        print:p_iconSize="26dp" />
 
 </LinearLayout>

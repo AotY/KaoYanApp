@@ -8,5 +8,16 @@
     </style>
 
 
+    <style name="MaterialSettings.Dark" parent="MaterialSettingsTheme">
+        <item name="msColorPrimary">@color/primary_color_1</item>
+        <item name="msColorPrimaryDark">@color/drak_primary_color_1</item>
+        <item name="msColorAccent">@color/accent_color</item>
+        <item name="msWindowBg">@color/text_icons</item>
+        <item name="msColorHeader">@color/primary_text</item>
+        <item name="msColorTextTitle">@color/primary_text</item>
+        <item name="msColorTextSubTitle">@color/primary_text</item>
+        <item name="android:statusBarColor">@color/drak_primary_color_1</item>
+        <item name="android:navigationBarColor">@color/drak_primary_color_1</item>
+    </style>
 
 </resources>

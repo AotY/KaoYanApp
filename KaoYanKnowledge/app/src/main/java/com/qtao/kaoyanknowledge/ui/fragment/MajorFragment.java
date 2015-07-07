@@ -12,6 +12,7 @@ import com.qtao.kaoyanknowledge.R;
 import com.qtao.kaoyanknowledge.ui.BaseActivity;
 import com.qtao.kaoyanknowledge.ui.ChooseMajorActivity;
 import com.qtao.kaoyanknowledge.ui.MainActivity;
+import com.qtao.kaoyanknowledge.utils.L;
 import com.qtao.kaoyanknowledge.utils.UserInfo;
 
 /**
@@ -22,24 +23,38 @@ public class MajorFragment extends Fragment {
     /**
      * 用户专业
      */
-    private String major ;
+    private String major;
+
+    /**
+     * @param activity
+     */
+    private Activity activity;
+
+    public static final int REQUESTCODE = 0x0001;
+
+    public MajorFragment() {
+
+    }
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        major = UserInfo.getUserMajor(activity);
-        if(major == null){
-            //跳到选择专业页面
-            Intent chooseIntent = new Intent(activity , ChooseMajorActivity.class);
-            startActivity(chooseIntent);
-        }
-
+        this.activity = activity;
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //|| UserInfo.getUserChooseEnterMajor(activity)
+        if (UserInfo.getUserMajor(activity) == null ) {
+            //跳到选择专业页面
+            Intent chooseIntent = new Intent(activity, ChooseMajorActivity.class);
+            //如果是调用Fragment中的startActivityForResult方法，返回到Fragment中处理
+            //如果是调用getActivity()的startActivityForResult方法，返回到activity中
+            getActivity().startActivityForResult(chooseIntent, REQUESTCODE);
+            return null;
+        }
         return inflater.inflate(R.layout.major_layout,
                 container, false);
     }
@@ -47,12 +62,16 @@ public class MajorFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((BaseActivity) getActivity()).getFadingActionBarHelper().setActionBarAlpha(255);
-        ((MainActivity) getActivity()).getTintManager().setStatusBarAlpha(255);
+        activity = getActivity();
+        ((BaseActivity) activity).getFadingActionBarHelper().setActionBarAlpha(255);
+        ((MainActivity) activity).getTintManager().setStatusBarAlpha(255);
+        ((BaseActivity) activity).setTitle(R.string.major);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        L.e("ma onActivityResult");
     }
+
 }

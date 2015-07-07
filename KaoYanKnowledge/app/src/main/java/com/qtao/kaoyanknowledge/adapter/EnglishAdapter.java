@@ -72,7 +72,7 @@ public class EnglishAdapter extends RecyclerView.Adapter<EnglishAdapter.VH> {
 
         holder.rootView.setTag(english);
         holder.itemName.setText(english.getName());
-        holder.itemImg.setImageDrawable(new DrawableProvider(mContext).getRoundRectWithBorder(english.getBerif()));
+        holder.itemImg.setImageDrawable(new DrawableProvider(mContext).getRect(english.getBerif()));
 //        Picasso.with(mContext).load(english.getThumbnailDrawable()).into(holder.ivProfile);
 
     }

@@ -6,6 +6,10 @@
     <string name="action_settings">Settings</string>
     <string name="ic_adb_description">ADB</string>
     <string name="choose_major">选择专业</string>
+    <string name="math">数学</string>
+    <string name="major">专业</string>
+    <string name="english">英语</string>
+    <string name="political">政治</string>
 
 
 
@@ -466,4 +470,8 @@
     <string name="ic_whatshot">&#xe1ae;</string>
     <string name="ic_wifi_tethering">&#xe1af;</string>
     <string name="ic_work">&#xe1b0;</string>
+    <string name="commit">确定</string>
+    <string name="cancel">取消</string>
+    <string name="setting">设置</string>
+    <string name="general">通用</string>
 </resources>

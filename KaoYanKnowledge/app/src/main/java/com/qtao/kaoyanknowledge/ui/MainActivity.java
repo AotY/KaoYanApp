@@ -2,18 +2,14 @@ package com.qtao.kaoyanknowledge.ui;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.github.johnpersano.supertoasts.SuperToast;
-import com.github.johnpersano.supertoasts.util.Style;
-import com.qtao.kaoyanknowledge.App.KaoYanApplication;
 import com.qtao.kaoyanknowledge.R;
 import com.qtao.kaoyanknowledge.ui.fragment.EnglishFragment;
 import com.qtao.kaoyanknowledge.ui.fragment.MajorFragment;
@@ -125,15 +121,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     /**
      * 用于保存页面的名字
      */
-    private static final String Channel = "channel" ;
+    private static final String Channel = "channel";
 
     /**
      * 用于记录当前的Tad ,即当前在那个页面
      */
     private int curTad;
-
-
-
 
 
     @Override
@@ -150,7 +143,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
 
-
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
@@ -161,13 +153,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt(Channel , curTad);
+        outState.putInt(Channel, curTad);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        if(savedInstanceState != null){
+        if (savedInstanceState != null) {
             setTabSelection(savedInstanceState.getInt(Channel));
         }
     }
@@ -224,7 +216,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
      * @param index 每个tab页对应的下标。0表示消息，1表示联系人，2表示动态，3表示设置。
      */
     private void setTabSelection(int index) {
-        curTad = index ;
+        curTad = index;
         clearSelection();
         // 开启一个Fragment事务
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -313,24 +305,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         majorText.setTextColor(Color.parseColor(textCleanColor));
     }
 
-
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            SuperToast.create(KaoYanApplication.appContext, "Setting", SuperToast.Duration.SHORT,
-                    Style.getStyle(Style.BLUE, SuperToast.Animations.SCALE)).show();
-            return true;
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == MajorFragment.REQUESTCODE) {
+            L.e("m onActivityResult");
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.hide(majorFragment);
+            majorFragment = null;
+            setTabSelection(3);
         }
-        return super.onOptionsItemSelected(item);
     }
-
 
 }

@@ -2,7 +2,10 @@ package com.qtao.kaoyanknowledge.ui;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.achep.header2actionbar.FadingActionBarHelper;
 import com.qtao.kaoyanknowledge.R;
@@ -52,7 +55,6 @@ public class BaseActivity extends Activity {
 //        }
 
         getStatusHeight();
-
 
 //        statusHeight = getResources().getDimensionPixelSize(com.android.internal.R.dimen.status_bar_height);
     }
@@ -132,6 +134,19 @@ public class BaseActivity extends Activity {
     }
 
     /**
+     * 设置标题
+     *
+     * @param title
+     */
+    public void setTitle(String title) {
+        actionBar.setTitle(title);
+    }
+
+    public void setTitle(int title) {
+        actionBar.setTitle(title);
+    }
+
+    /**
      * 获取FadingActionBarHelper
      *
      * @return FadingActionBarHelper
@@ -140,4 +155,23 @@ public class BaseActivity extends Activity {
         return mFadingActionBarHelper;
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+//
+            Intent intent = new Intent(this, SettignActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

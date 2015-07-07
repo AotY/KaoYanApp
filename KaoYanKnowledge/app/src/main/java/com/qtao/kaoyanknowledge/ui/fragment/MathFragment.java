@@ -84,6 +84,11 @@ public class MathFragment extends HeaderFragment implements MathAdapter.OnMathIt
                         .getFadingActionBarHelper()
                         .setActionBarAlpha((int) (255 * progress));
                 ((MainActivity) activity).getTintManager().setStatusBarAlpha((255 * progress));
+                if(progress == 1f){
+                    ((BaseActivity) activity).setTitle(R.string.math);
+                }else {
+                    ((BaseActivity) activity).setTitle(R.string.app_name);
+                }
             }
         });
 //        cancelAsyncTask(mAsyncLoadSomething);

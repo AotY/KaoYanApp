@@ -2,7 +2,7 @@
 
     <!--&lt;!&ndash; Base application theme. &ndash;&gt;-->
     <!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
-        <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+    <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
     <!--</style>-->
 
     <style name="AppTheme" parent="AppBaseTheme"></style>
@@ -25,7 +25,6 @@
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/primary_color_1</item>
     </style>
-
 
 
     <!--  ************************
@@ -58,6 +57,18 @@
     <style name="TreeNodeStyleDivided">
         <item name="android:showDividers">middle</item>
         <item name="android:divider">@android:drawable/divider_horizontal_bright</item>
+    </style>
+
+
+    <style name="MaterialSettings.Dark" parent="MaterialSettingsTheme">
+        <item name="msColorPrimary">@color/primary_color_1</item>
+        <item name="msColorPrimaryDark">@color/drak_primary_color_1</item>
+        <item name="msColorAccent">@color/accent_color</item>
+        <item name="msWindowBg">@color/text_icons</item>
+        <item name="msColorHeader">@color/primary_text</item>
+        <item name="msColorTextTitle">@color/primary_text</item>
+        <item name="msColorTextSubTitle">@color/primary_text</item>
+
     </style>
 
 </resources>

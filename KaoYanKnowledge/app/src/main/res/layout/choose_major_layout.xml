@@ -3,20 +3,27 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_marginTop="20dp"
+    android:gravity="center"
     android:layout_height="match_parent">
 
-   <!-- <TextView
-        android:padding="5dp"
-        android:textSize="16sp"
-        android:text="Last Clicked:"
-        android:textColor="@color/primary_text"
-        android:background="@color/primary_color_1"
-        android:id="@+id/major_status_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />-->
+    <!-- <TextView
+         android:padding="5dp"
+         android:textSize="16sp"
+         android:text="Last Clicked:"
+         android:textColor="@color/primary_text"
+         android:background="@color/primary_color_1"
+         android:id="@+id/major_status_bar"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content" />-->
+
+    <include
+        android:visibility="visible"
+        layout="@layout/progress_layout"
+        android:id="@+id/choose_major_progress"/>
 
     <RelativeLayout
-        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/major_choose_container"></RelativeLayout>
